@@ -5,10 +5,12 @@ function Header() {
   const {isOpen, setIsOpen} = useGlobalSidebar();
   return (
     <>
-      <div>Header </div>
-      <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <BsBag className="text-2xl" />
-      </div>
+      <header className="bg-pink-200 flex justify-between px-6">
+        <div>Header</div>
+        <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+          <BsBag className="text-2xl" />
+        </div>
+      </header>
     </>
   );
 }

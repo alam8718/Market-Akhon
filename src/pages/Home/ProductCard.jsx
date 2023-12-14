@@ -1,8 +1,10 @@
 import React from "react";
 import {BsPlus, BsEyeFill} from "react-icons/bs";
 import {Link} from "react-router-dom";
+import {useGlobalCart} from "../../contexts/CartContext";
 function ProductCard({item}) {
   const {id, title, image, price, category} = item;
+  const {addToCart} = useGlobalCart();
   return (
     <>
       <div>
@@ -19,13 +21,15 @@ function ProductCard({item}) {
             </div>
           </div>
           {/* button  */}
-          <div className="bg-red-400/50 absolute top-6 -right-16 p-1.5 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 group-hover:right-4 transition-all gap-y-2 duration-300  ">
-            <button className="flex justify-center items-center w-10 h-10 text-white bg-red-500">
+          <div className="  absolute top-6 -right-16 p-1.5 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 group-hover:right-4 transition-all gap-y-2 duration-300  ">
+            <button
+              onClick={() => addToCart(item, id)}
+              className="flex justify-center items-center w-10 h-10 text-white bg-red-500">
               <BsPlus className="text-3xl" />
             </button>
             <Link
               to={`/product/${id}`}
-              className="bg-white/80 flex justify-center items-center w-10 h-10">
+              className="bg-white/80 border shadow-lg flex justify-center items-center w-10 h-10">
               <BsEyeFill className="" />
             </Link>
           </div>

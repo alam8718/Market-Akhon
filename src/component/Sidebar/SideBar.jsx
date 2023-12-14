@@ -1,8 +1,9 @@
 import React from "react";
+import {useGlobalSidebar} from "../../contexts/SidebarContext";
+
 
 import {IoMdArrowForward} from "react-icons/io";
 import {FiTrash2} from "react-icons/fi";
-import {useGlobalSidebar} from "../../contexts/SidebarContext";
 
 function SideBar() {
   const {isOpen, handleClose} = useGlobalSidebar();

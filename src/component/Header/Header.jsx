@@ -5,7 +5,7 @@ function Header() {
   const {isOpen, setIsOpen} = useGlobalSidebar();
   return (
     <>
-      <header className="bg-pink-200 flex justify-between px-6">
+      <header className="bg-pink-200 flex justify-between px-6 py-4">
         <div>Header</div>
         <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
           <BsBag className="text-2xl" />

@@ -9,7 +9,7 @@ import CartItem from "../../pages/Home/CartItem";
 
 function SideBar() {
   const {isOpen, handleClose} = useGlobalSidebar();
-  const {cart} = useGlobalCart();
+  const {cart, clearCart} = useGlobalCart();
   return (
     <>
       <div
@@ -26,11 +26,30 @@ function SideBar() {
             <IoMdArrowForward className="text-2xl" />
           </div>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 ">
           {cart.map((item) => (
-            <CartItem item={item} />
+            <CartItem item={item} key={item.id} />
           ))}
         </div>
+        {/* sidebar bottom  */}
+        {cart.length < 1 ? (
+          ""
+        ) : (
+          <>
+            <div className="border my-4 ">
+              <div className=" p-2 flex justify-between items-center ">
+                <h1 className="uppercase font-semibold ">
+                  <span>Total: </span> $ 10000
+                </h1>
+                <div
+                  onClick={() => clearCart()}
+                  className="cursor-pointer text-xl bg-red-500 py-4 w-12 h-12 rounded-full flex justify-center items-center text-white hover:bg-red-600 duration-300">
+                  <FiTrash2 />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

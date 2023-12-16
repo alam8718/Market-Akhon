@@ -7,7 +7,7 @@ function CartItem({item}) {
   const {removeFromCart, incrementItem, decrementItem} = useGlobalCart();
   return (
     <>
-      <div className=" flex gap-x-4 py-2 px-2 lg:px-6 border border-gray-200 w-full font-light text-gray-500 ">
+      <div className=" flex gap-x-4 mb-2 py-2 px-2 lg:px-6 border border-gray-200 w-full font-light text-gray-500 ">
         <div className="w-full min-h-[150px] flex items-center gap-x-4   ">
           <Link to={`/product/${id}`}>
             <img src={image} className="max-w-[80px] " alt="" />

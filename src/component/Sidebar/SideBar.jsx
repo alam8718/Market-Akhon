@@ -26,7 +26,7 @@ function SideBar() {
             <IoMdArrowForward className="text-2xl" />
           </div>
         </div>
-        <div className="mt-8 ">
+        <div className="my-8 flex flex-col gap-y-3 h-[600px] overflow-x-hidden overflow-y-auto ">
           {cart.map((item) => (
             <CartItem item={item} key={item.id} />
           ))}

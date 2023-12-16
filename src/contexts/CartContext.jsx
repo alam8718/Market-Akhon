@@ -4,6 +4,17 @@ export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
   const [cart, setCart] = useState([]);
+  const [itemAmount, setItemAmount] = useState(0);
+
+  // updating the itemAmount
+  useEffect(() => {
+    if (cart) {
+      const amount = cart.reduce((accumulator, currentValue) => {
+        return Number(accumulator + currentValue.amount);
+      }, 0);
+      setItemAmount(amount);
+    }
+  }, [cart]);
 
   //add to cart
   const addToCart = (product, id) => {
@@ -39,13 +50,13 @@ export const CartProvider = ({children}) => {
 
   //increment item
   const incrementItem = (id) => {
-    const CartItem = cart.filter((item) => item.id === id);
+    const CartItem = cart.find((item) => item.id === id);
     addToCart(CartItem, id);
   };
 
   //decrement item
   const decrementItem = (id) => {
-    const CartItem = cart.filter((item) => item.id === id);
+    const CartItem = cart.find((item) => item.id === id);
     if (CartItem) {
       const newCart = cart.map((item) => {
         if (item.id === id) {
@@ -56,6 +67,7 @@ export const CartProvider = ({children}) => {
       });
       setCart(newCart);
     }
+
     if (CartItem.amount < 2) {
       removeFromCart(id);
     }
@@ -70,6 +82,7 @@ export const CartProvider = ({children}) => {
         clearCart,
         incrementItem,
         decrementItem,
+        itemAmount,
       }}>
       {children}
     </CartContext.Provider>

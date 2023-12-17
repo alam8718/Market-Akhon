@@ -9,7 +9,7 @@ import CartItem from "../../pages/Home/CartItem";
 
 function SideBar() {
   const {isOpen, handleClose} = useGlobalSidebar();
-  const {cart, clearCart, totalAmount} = useGlobalCart();
+  const {cart, clearCart, totalAmount, itemAmount} = useGlobalCart();
   return (
     <>
       <div
@@ -17,9 +17,9 @@ function SideBar() {
           isOpen ? "right-0" : "-right-full"
         } w-full h-full bg-white fixed top-0  md:w-[45%] xl:max-w-[30%] shadow-2xl z-20 px-4 lg:px-[35px] transition-all duration-300`}>
         <div className="flex items-center justify-between py-6 border-b border-b-black">
-          <div className="text-sm font-semibold uppercase">
-            Shopping Bag (0)
-          </div>
+          <h1 className="text-sm font-semibold uppercase">
+            Shopping Bag ({itemAmount})
+          </h1>
           <div
             className="cursor-pointer w-8 h-8 flex justify-center items-center"
             onClick={() => handleClose()}>

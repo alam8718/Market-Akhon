@@ -19,9 +19,9 @@ function Header() {
     <>
       <header
         className={`${
-          isActive ? "bg-white shadow py-4" : "bg-none py-3"
+          isActive ? "bg-white shadow py-4" : "bg-none py-4"
         } fixed w-full z-10 transition-all `}>
-        <div className=" flex justify-between items-center container mx-auto px-6 ">
+        <div className=" flex justify-between items-center container mx-auto  ">
           <Link to={"/"}>
             <div>
               <img src={logo} className="w-[40px]" alt="site logo " />

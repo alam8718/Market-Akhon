@@ -9,7 +9,7 @@ import CartItem from "../../pages/Home/CartItem";
 
 function SideBar() {
   const {isOpen, handleClose} = useGlobalSidebar();
-  const {cart, clearCart} = useGlobalCart();
+  const {cart, clearCart, totalAmount} = useGlobalCart();
   return (
     <>
       <div
@@ -26,7 +26,7 @@ function SideBar() {
             <IoMdArrowForward className="text-2xl" />
           </div>
         </div>
-        <div className="my-8 flex flex-col gap-y-3 h-[600px] overflow-x-hidden overflow-y-auto ">
+        <div className="my-8 flex flex-col gap-y-3 h-[500px] overflow-x-hidden overflow-y-auto ">
           {cart.map((item) => (
             <CartItem item={item} key={item.id} />
           ))}
@@ -36,16 +36,29 @@ function SideBar() {
           ""
         ) : (
           <>
-            <div className="border my-4 ">
-              <div className=" p-2 flex justify-between items-center ">
+            <div className="  my-4 ">
+              <div className="mb-3 p-2 flex justify-between items-center ">
                 <h1 className="uppercase font-semibold ">
-                  <span>Total: </span> $ 10000
+                  <span>Total: $ {parseFloat(totalAmount).toFixed(2)}</span>
                 </h1>
                 <div
                   onClick={() => clearCart()}
                   className="cursor-pointer text-xl bg-red-500 py-4 w-12 h-12 rounded-full flex justify-center items-center text-white hover:bg-red-600 duration-300">
                   <FiTrash2 />
                 </div>
+              </div>
+
+              <div className="flex flex-col gap-y-4">
+                <Link
+                  to={"/"}
+                  className="flex justify-center items-center text-primaryw-full font-medium bg-gray-200 py-3 ">
+                  View Cart
+                </Link>
+                <Link
+                  to={"/"}
+                  className="flex justify-center items-center text-white w-full font-medium bg-primary py-3 ">
+                  CheckOut
+                </Link>
               </div>
             </div>
           </>
